@@ -1,0 +1,19 @@
+{
+  "name": "Wait 30 - รอก่อนซื้อ",
+  "short_name": "Wait 30",
+  "description": "บันทึกของที่อยากซื้อ รอคิดก่อนตัดสินใจ ลดการซื้อตามอารมณ์",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FAF6EE",
+  "theme_color": "#7755BB",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

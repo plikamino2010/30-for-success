@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+
+body {
+  font-family: 'Itim', 'Noto Sans Thai', 'Sarabun', system-ui, -apple-system, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  color: #3D2B1F;
+  background-color: #FAF6EE;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+#root { position: relative; z-index: 1; }
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@layer components {
+  .surface {
+    background: rgba(255, 254, 250, 0.9);
+    border-radius: 22px 16px 22px 18px;
+    border: 1.5px solid rgba(140, 100, 60, 0.13);
+    box-shadow:
+      4px 5px 0px rgba(109, 80, 200, 0.17),
+      0 2px 0 rgba(140, 100, 60, 0.08),
+      0 8px 28px rgba(80, 50, 10, 0.07);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 px-5 select-none cursor-pointer;
+    font-family: 'Itim', 'Noto Sans Thai', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    border-radius: 14px 10px 14px 10px;
+    min-height: 48px;
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+  }
+
+  .btn:disabled { @apply opacity-40 cursor-not-allowed pointer-events-none; }
+  .btn:active:not(:disabled) { transform: translate(2px, 3px); box-shadow: 1px 1px 0px rgba(0,0,0,0.1) !important; }
+
+  .btn-sm {
+    font-size: 0.83rem;
+    border-radius: 11px 8px 11px 8px;
+    min-height: 40px;
+    @apply px-3.5;
+  }
+
+  .btn-primary {
+    @apply btn text-white;
+    background: linear-gradient(140deg, #8B6CC8 0%, #7040AA 100%);
+    border: none;
+    box-shadow: 4px 4px 0px rgba(96, 40, 168, 0.45);
+  }
+
+  .btn-secondary {
+    @apply btn;
+    color: #4A3020;
+    background: rgba(255, 254, 250, 0.92);
+    border: 1.5px solid rgba(140, 100, 60, 0.22);
+    box-shadow: 3px 3px 0px rgba(140, 100, 60, 0.18);
+  }
+
+  .btn-success {
+    @apply btn text-white;
+    background: linear-gradient(140deg, #4E9A72 0%, #3A7A58 100%);
+    border: none;
+    box-shadow: 4px 4px 0px rgba(40, 100, 70, 0.45);
+  }
+
+  .btn-danger {
+    @apply btn;
+    color: #C0433A;
+    background: rgba(255, 254, 250, 0.92);
+    border: 1.5px solid rgba(200, 70, 60, 0.3);
+    box-shadow: 3px 3px 0px rgba(200, 70, 60, 0.2);
+  }
+
+  .btn-amber {
+    @apply btn text-white;
+    background: linear-gradient(140deg, #D4913A 0%, #B87020 100%);
+    border: none;
+    box-shadow: 4px 4px 0px rgba(160, 90, 20, 0.45);
+  }
+
+  .btn-muted {
+    @apply btn;
+    color: #A08870;
+    background: rgba(240, 233, 220, 0.8);
+    border: 1px solid rgba(140, 100, 60, 0.12);
+  }
+
+  .field-label {
+    @apply block mb-1.5;
+    font-family: 'Itim', 'Noto Sans Thai', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #6A5033;
+  }
+
+  .field-input {
+    @apply w-full transition;
+    font-family: 'Itim', 'Noto Sans Thai', sans-serif;
+    background: rgba(255, 254, 250, 0.85);
+    border: 1.5px solid rgba(140, 100, 60, 0.2);
+    border-radius: 14px 10px 14px 10px;
+    padding: 13px 18px;
+    font-size: 15px;
+    color: #3D2B1F;
+    box-shadow: inset 0 1px 4px rgba(100, 65, 20, 0.07), 2px 2px 0px rgba(140,100,60,0.1);
+  }
+
+  .field-input::placeholder { color: #B09878; }
+
+  .field-input:focus {
+    outline: none;
+    border-color: rgba(119, 85, 187, 0.55);
+    box-shadow: 0 0 0 3px rgba(119, 85, 187, 0.12), inset 0 1px 4px rgba(100, 65, 20, 0.07);
+  }
+
+  .field-hint { @apply text-xs mt-1.5 leading-relaxed; color: #A08870; }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap;
+    font-family: 'Itim', 'Noto Sans Thai', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    border-radius: 100px;
+    padding: 4px 12px;
+  }
+
+  .badge-dot { @apply flex-shrink-0; width: 6px; height: 6px; border-radius: 50%; }
+}
